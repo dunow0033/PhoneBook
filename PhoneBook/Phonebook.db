@@ -1,0 +1,5 @@
+CREATE TABLE contacts(
+	ID INT NOT NULL,
+	name varchar(25),
+	phone_number varchar(25)
+)
