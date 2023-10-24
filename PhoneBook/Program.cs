@@ -32,20 +32,16 @@ internal class Program
     private static void AddContact()
     {
         AnsiConsole.Clear();
-        string personName = AnsiConsole.Ask<string>("Enter the name of the contact: ");
-        string personPhone = AnsiConsole.Ask<string>("Enter the phonenumber of the contact: ");
 
-        db.Add(new Contact(personName, personPhone));
+    
+            using var db = new ContactContext();
+            string personName = AnsiConsole.Ask<string>("Enter the name of the contact: ");
+            string personPhone = AnsiConsole.Ask<string>("Enter the phonenumber of the contact: ");
+            db.Add(new Contact { name = personName, phone_number = personPhone });
 
-        Console.WriteLine("hello0");
-
-        db.SaveChanges();
-
-        Console.WriteLine("hello1");
+            db.SaveChanges();
 
         ListContacts();
-
-        Console.WriteLine("hello2");
     }
 
     private static void ListContacts()
@@ -59,7 +55,7 @@ internal class Program
 
         foreach (var contact in contacts)
         {
-            table.AddRow($"{contact.Name}", $"{contact.PhoneNumber}");
+            table.AddRow($"{contact.name}", $"{contact.phone_number}");
         }
         AnsiConsole.Write(table);
 

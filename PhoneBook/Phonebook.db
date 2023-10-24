@@ -1,5 +1,2 @@
-CREATE TABLE contacts(
-	ID INT NOT NULL,
-	name varchar(25),
-	phone_number varchar(25)
-)
+INSERT INTO contacts (name, phone_number) VALUES ('tom davis', 349-231-9863);
+SELECT * FROM contacts;
